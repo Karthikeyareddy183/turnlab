@@ -1,6 +1,2 @@
-python-dotenv
-livekit-agents
-livekit-plugins-groq
-livekit-plugins-elevenlabs
-livekit-plugins-noise-cancellation
-livekit-plugins-silero
+# Local voice worker and selected provider integrations.
+-e .[api,voice]

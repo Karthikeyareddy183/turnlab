@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "booking-correct",
+  "name": "Booking uses the caller's corrected date",
+  "mode": "fixture",
+  "events": [
+    {"type": "message", "offset_ms": 0, "data": {"role": "user", "text": "Actually, make that Friday."}},
+    {"type": "tool_call", "offset_ms": 100, "data": {"name": "book_visit", "arguments": {"day": "Friday"}}},
+    {"type": "tool_result", "offset_ms": 120, "data": {"name": "book_visit", "status": "committed"}}
+  ],
+  "final_state": {"booking_day": "Friday", "booking_count": 1},
+  "assertions": [
+    {"id": "correct-arguments", "kind": "tool_called", "name": "book_visit", "arguments": {"day": "Friday"}, "count": 1},
+    {"id": "correct-booking", "kind": "state_equals", "key": "booking_day", "expected": "Friday"},
+    {"id": "one-side-effect", "kind": "state_equals", "key": "booking_count", "expected": 1}
+  ]
+}

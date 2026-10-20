@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "id": "memory-leak",
+  "name": "Seeded regression: another user's memory is retrieved",
+  "mode": "fixture",
+  "events": [
+    {"type": "memory_read", "offset_ms": 0, "data": {"tenant_id": "fixture-tenant", "user_id": "other-user", "key": "preferred_day", "value": "Friday"}}
+  ],
+  "final_state": {},
+  "assertions": [
+    {"id": "memory-access-scope", "kind": "memory_isolation", "tenant_id": "fixture-tenant", "user_id": "current-user"}
+  ]
+}

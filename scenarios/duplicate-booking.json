@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "id": "duplicate-booking",
+  "name": "Seeded regression: retry duplicates a committed booking",
+  "mode": "fixture",
+  "events": [
+    {"type": "tool_call", "offset_ms": 0, "data": {"name": "book_visit", "arguments": {"day": "Friday"}}},
+    {"type": "tool_result", "offset_ms": 100, "data": {"name": "book_visit", "status": "timeout_after_commit"}},
+    {"type": "tool_call", "offset_ms": 200, "data": {"name": "book_visit", "arguments": {"day": "Friday"}}}
+  ],
+  "final_state": {"booking_count": 2},
+  "assertions": [
+    {"id": "one-side-effect", "kind": "state_equals", "key": "booking_count", "expected": 1}
+  ]
+}

@@ -1,0 +1,22 @@
+.env
+.env.*
+!.env.example
+.venv/
+.turnlab/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+node_modules/
+dist/
+
+
+# Personal notes, not part of the project
+docs/job-research.md
+
+# Editor and OS clutter
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
